@@ -1,0 +1,11 @@
+ /AI-Words-Infinite-Meaning
+│── /src
+│   ├── metaphor_detection.py  
+│   ├── sutragama_logic.py  
+│   ├── karmic_rl.py  
+│   ├── multimodal_ai.py  
+│   ├── yuga_cycle_ai.py  
+│── main.py  
+│── requirements.txt  
+│── README.md  
+│── LICENSE
