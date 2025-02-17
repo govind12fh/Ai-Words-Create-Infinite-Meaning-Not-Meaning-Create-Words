@@ -1,0 +1,39 @@
+class AaptavakyaAI:
+    def __init__(self):
+        """Initialize Aaptavakya knowledge storage."""
+        self.knowledge_base = {}
+
+    def add_aaptavakya(self, source, statement):
+        """Store an Aaptavakya with its source."""
+        if source not in self.knowledge_base:
+            self.knowledge_base[source] = []
+        self.knowledge_base[source].append(statement)
+
+    def get_statements_by_source(self, source):
+        """Retrieve Aaptavakya statements from a given source."""
+        return self.knowledge_base.get(source, ["No statements found for this source."])
+
+    def infer_meaning(self, keywords):
+        """Basic inference by searching for keywords in Aaptavakya."""
+        results = []
+        for source, statements in self.knowledge_base.items():
+            for statement in statements:
+                if any(keyword in statement for keyword in keywords):
+                    results.append((source, statement))
+        return results if results else ["No relevant Aaptavakya found."]
+
+
+# Example Usage
+if __name__ == "__main__":
+    ai = AaptavakyaAI()
+
+    # Adding authoritative statements (Aaptavakya)
+    ai.add_aaptavakya("Vedas", "Truth is eternal.")
+    ai.add_aaptavakya("Upanishads", "Self-knowledge leads to liberation.")
+    ai.add_aaptavakya("Bhagavad Gita", "Dharma sustains the universe.")
+
+    # Retrieve statements from a specific source
+    print("Aaptavakya from Upanishads:", ai.get_statements_by_source("Upanishads"))
+
+    # Inference based on keywords
+    print("Searching for 'Dharma':", ai.infer_meaning(["Dharma"]))
